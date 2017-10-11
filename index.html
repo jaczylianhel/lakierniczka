@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Lakierownia</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="smartmenus/sm-core-css.css">
+  <link rel="stylesheet" href="smartmenus/sm-simple.css">
+  <script src="smartmenus/jquery.smartmenus.min.js"></script>
+
+  
+  <style>
+
+
+ #naglowek ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    list-style: none;
+}
+
+#naglowek li {
+    float: left;
+    margin: 0 10px;
+}
+
+#naglowek a {
+    background: #ddd;
+  padding: .7em 1em;
+  float: left;
+  text-decoration: none;
+  color: #444;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  position: relative;
+}
+
+#naglowek li:first-child a {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#naglowek li:last-child a {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#naglowek a:hover {
+    background: #99db76;
+}
+
+#naglowek li:not(:first-child) > a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;   
+    border-width: 1.5em 0 1.5em 1em;
+    border-style: solid;
+    border-color: #ddd #ddd #ddd transparent;
+    left: -1em;
+}
+
+#naglowek li:not(:first-child) > a:hover::before {
+    border-color: #99db76 #99db76 #99db76 transparent;
+}
+
+#naglowek li:not(:last-child) > a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-top: -1.5em;   
+  border-top: 1.5em solid transparent;
+  border-bottom: 1.5em solid transparent;
+  border-left: 1em solid #ddd;
+  right: -1em;
+}
+
+#naglowek li:not(:last-child) > a:hover::after {
+    border-left-color: #99db76;
+}
+
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      margin: auto;
+  }
+  .carousel-fade .carousel-inner { background: white; }
+.carousel-fade .carousel-control { z-index: 2; }  
+.carousel-fade .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  }
+
+  .carousel-fade .next.left,
+  .carousel-fade .prev.right,
+  .carousel-fade .item.active { opacity: 1; }
+
+  .carousel-fade .active.left,
+  .carousel-fade .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    }
+
+
+/* Safari Fix */
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+}
+
+
+
+
+/* Carousel Control custom */
+.carousel-control .control-icon {
+  font-size: 48px;
+  height: 30px;
+  margin-top: -15px;
+  width: 30px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  }
+  .carousel-control .prev { margin-left:  -15px;  left: 50%; } /* Prev */
+  .carousel-control .next { margin-right: -15px; right: 50%; } /* Next */
+
+
+/* Removing BS background */
+.carousel .control-box { opacity: 0; }
+a.carousel-control.left  { left: 0; background: none; border: 0;}
+a.carousel-control.right { right: 0; background: none; border: 0;}
+
+
+/* Animation */
+.control-box, a.carousel-control, .carousel-indicators li {
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -ms-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  transition: all 250ms ease;   
+  /* hardware acceleration causes Bootstrap carousel controlbox margin error in webkit */
+  /* Assigning animation to indicator li will make slides flicker */
+  } 
+
+
+/* Hover animation */
+.carousel:hover .control-box { opacity: 1; }
+.carousel:hover a.carousel-control.left { left: 15px; }
+.carousel:hover a.carousel-control.right { right: 15px; }  
+
+
+/* Carouse Indicator */
+.carousel-indicators li.active,
+.carousel-indicators li { border: 0; }
+
+.carousel-indicators li {
+  background: #666;
+  margin: 0 3px;
+  width: 12px;
+  height: 12px;
+  }
+
+.carousel-indicators li.active {
+  background: #fff;
+  margin: 0 3px;
+  }
+  </style>
+  </head>
+<body style="overflow-x: hidden;">
+<header>
+<section id="glowna">
+<div class="container">
+  <br>
+  <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="css/images/lakierKaruzela1.jpg" alt="lakier">
+      </div>
+
+      <div class="item">
+        <img src="css/images/lakierKaruzela2.jpg" alt="lakier">
+      </div>
+    
+      <div class="item">
+        <img src="css/images/lakierKaruzela3.jpg" alt="lakier">
+      </div>
+
+      <div class="item">
+        <img src="css/images/lakierKaruzela4.jpg" alt="lakier">
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+  <div class="control-box">
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+</div>
+</section>
+</header> 
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+ <!-- <div id="naglowek">  inny naglowek-->
+    
+	<div class="navbar-header navbar-left">
+	  <div class = "collapse navbar-collapse" id="navbar_collapse">  
+		<ul class="sm sm-simple">
+		    <li><a data-scroll href="#glowna">Główna</a></li>
+            <li><a data-scroll="" href="#oMnie">O mnie</a></li>
+			<li><a data-scroll href="#druga" href="#">oferta</a>
+			  <ul> 
+			    <li><a data-scroll href="#hybryda">Hybryda</a></li>
+                <li><a data-scroll href="#japonski">Japonski</a></li>
+			    <li><a data-scroll href="#meski" href="#">Męski</a> </li>
+			  </ul> 
+			<li><a data-scroll href="#trzy">Strona 3</a></li>
+			<li><a data-scroll href="#cztery">Strona 4</a></li>
+		</ul> 
+      </div>
+    </div>
+	
+	<div class="navbar-header navbar-right">
+	<ul class="sm sm-simple">
+	  <li><a data-scroll href="#register">Rejestracja</a></li>
+      <li><a data-scroll="" href="#logIn">Zaloguj się</a></li>
+    </ul>
+	</div>
+ <!--  </div> zamyka navbar header -->
+</div> <!-- zamyka diva contener -->
+</nav> 
+<main>
+
+  <section id="oMnie" class="oMnie" data-scroll-id="oMnie" tabindex="-1" style="outline: none;">
+  <br><br>
+  <div class="container-fluid">
+          <h2 class="text-center">O MNIE</h2>
+        </div>
+		
+		<div class="row item-row">
+            <div class="col-md-6">
+              <center><img class="img-thumbnail" src="css/images/1.jpeg" width="400" height="200" alt="kamila"> </center>
+            </div>
+<br><br><br>
+            <div class="col-md-6 podtytul">
+              <h3 class="podtytul">Witaj</h3>
+              <p class="ustawTekst">Mam na imię Kamila, a to jest moja strona, na której podzielę się z Tobą zamiłowaniem do stylizacji paznokci i pomogę Ci zadbać o Twoje dłonie.
+Nie było łatwo, ale się udało! Połączenie talentu, pasji, kreatywności i poświęcenia, pozwoliło mi znaleźć się w tym miejscu.
+Cenię sobie wysoką jakość usług oraz Twój komfort, dlatego wyszłam naprzeciw Twoim oczekiwaniom! Nie musisz już tracić czasu, to ja przyjadę do Ciebie! Pamiętaj jestem estetką i zadbam o to, aby Twoje dłonie były najlepszą wizytówką!</p>
+            </div>
+          </div>
+</section>
+		  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<section id="druga" class="druga">
+  
+    <div class="container-fluid section-title">
+       	
+		<div class="row item-row">
+<br><br><br>
+            <div class="col-md-6 podtytul">
+              <h3 class="podtytul">Witaj</h3>
+              <p class="ustawTekst">Mam na imię Kamila, a to jest moja strona, na której podzielę się z Tobą zamiłowaniem do stylizacji paznokci i pomogę Ci zadbać o Twoje dłonie.
+Nie było łatwo, ale się udało! Połączenie talentu, pasji, kreatywności i poświęcenia, pozwoliło mi znaleźć się w tym miejscu.
+Cenię sobie wysoką jakość usług oraz Twój komfort, dlatego wyszłam naprzeciw Twoim oczekiwaniom! Nie musisz już tracić czasu, to ja przyjadę do Ciebie! Pamiętaj jestem estetką i zadbam o to, aby Twoje dłonie były najlepszą wizytówką!</p>
+            </div>
+			<div class="col-md-6">
+              <center><img class="img-thumbnail" src="css/images/2.jpeg" width="400" height="200" alt="kamila"> </center>
+            </div>
+        </div>
+	</div>
+		  </section> 
+		  		  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<section id="trzy" class="trzy">
+  
+    <div class="container-fluid section-title">
+		<div class="row item-row">
+		<div class="col-md-6">
+              <center><img class="img-thumbnail" src="css/images/3.jpeg" width="400" height="200" alt="kamila"> </center>
+            </div>
+			<br><br><br>
+            <div class="col-md-6 podtytul">
+              <h3 class="podtytul">Witaj</h3>
+              <p class="ustawTekst">Mam na imię Kamila, a to jest moja strona, na której podzielę się z Tobą zamiłowaniem do stylizacji paznokci i pomogę Ci zadbać o Twoje dłonie.
+Nie było łatwo, ale się udało! Połączenie talentu, pasji, kreatywności i poświęcenia, pozwoliło mi znaleźć się w tym miejscu.
+Cenię sobie wysoką jakość usług oraz Twój komfort, dlatego wyszłam naprzeciw Twoim oczekiwaniom! Nie musisz już tracić czasu, to ja przyjadę do Ciebie! Pamiętaj jestem estetką i zadbam o to, aby Twoje dłonie były najlepszą wizytówką!</p>
+            </div>
+        </div>
+	</div>
+		  </section> 
+		  		  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<section id="cztery" class="cztery">
+  
+    <div class="container-fluid section-title">
+       	
+		<div class="row item-row">
+<br><br><br>
+            <div class="col-md-6 podtytul">
+              <h3 class="podtytul">Witaj</h3>
+              <p class="ustawTekst">Mam na imię Kamila, a to jest moja strona, na której podzielę się z Tobą zamiłowaniem do stylizacji paznokci i pomogę Ci zadbać o Twoje dłonie.
+Nie było łatwo, ale się udało! Połączenie talentu, pasji, kreatywności i poświęcenia, pozwoliło mi znaleźć się w tym miejscu.
+Cenię sobie wysoką jakość usług oraz Twój komfort, dlatego wyszłam naprzeciw Twoim oczekiwaniom! Nie musisz już tracić czasu, to ja przyjadę do Ciebie! Pamiętaj jestem estetką i zadbam o to, aby Twoje dłonie były najlepszą wizytówką!</p>
+            </div>
+			<div class="col-md-6">
+              <center><img class="img-thumbnail" src="css/images/4.jpeg" width="400" height="200" alt="kamila"> </center>
+            </div>
+        </div>
+	</div>
+		  </section> 
+</body>
+  <script>
+  $(document).ready(function() {
+  $('.sm').smartmenus({
+    showFunction: function($ul, complete) {
+      $ul.slideDown(250, complete);
+    },
+    hideFunction: function($ul, complete) {
+     $ul.slideUp(250, complete); 
+    }
+  }); //koniec funkcji smartmenus
+  
+  
+      $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+   
+}); // Koniec funkcji ready.
+</script>
+</html>
